@@ -7,10 +7,8 @@
 const app = require('../app');
 const debug = require('debug')('rest-project1:server');
 const http = require('http');
-const { Sequelize } = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config')[env];
-
 
 /**
  * Get port from environment and store in Express.

@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
 
 const countryRouter = require("./routes/country.routes");
 const provinceRouter = require("./routes/province.routes");
