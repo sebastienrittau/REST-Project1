@@ -25,7 +25,7 @@ exports.findbyCountryId = (req, res) => {
     const countryId = req.query.countryId;
     var condition = countryId ? { countryId: { [Op.like]: `%${countryId}%` } } : null;
 
-    Province.findAll({ where: condition })
+    Province.findAll({ where: condition, order: [['name', 'ASC']] })
         .then(data => {
             res.send(data);
         })

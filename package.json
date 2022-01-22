@@ -11,9 +11,10 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "pug": "^2.0.4"
+    "pug": "^3.0.2"
   },
   "devDependencies": {
+    "cors": "^2.8.5",
     "eslint": "^8.7.0",
     "eslint-config-google": "^0.14.0",
     "mariadb": "^2.5.5",

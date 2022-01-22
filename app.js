@@ -3,11 +3,16 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const cors = require('cors');
 
 const countryRouter = require("./routes/country.routes");
 const provinceRouter = require("./routes/province.routes");
+const jobFormRouter = require("./routes/jobForm.routes");
+const jobFormFileRouter = require("./routes/jobFormFile.routes");
 const countries = require("./controllers/country.controller");
 const provinces = require("./controllers/province.controller");
+const jobForms = require("./controllers/jobForm.controller");
+const jobFormFiles = require("./controllers/jobFormFile.controller");
 
 const db = require("./models");
 const Country = db.country;
@@ -20,6 +25,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -27,6 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/countries', countryRouter);
 app.use('/api/provinces', provinceRouter);
+app.use('/api/jobForm', jobFormRouter);
+app.use('/api/jobFormFile', jobFormFileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,7 +52,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const setupDatabase = async function(a, b) {
+const setupDatabase = async function() {
 
   await db.sequelize.sync({ force: true }).then(() => {
     console.log("Drop and re-sync db.");

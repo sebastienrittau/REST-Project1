@@ -2,14 +2,9 @@ const db = require("../models");
 const Country = db.country;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Country
-exports.create = (req, res) => {
-
-};
-
 // Retrieve all Countries from the database.
 exports.findAll = (req, res) => {
-    Country.findAll()
+    Country.findAll({order: [['name', 'ASC']]})
         .then(data => {
             res.send(data);
         })

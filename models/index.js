@@ -23,5 +23,7 @@ db.sequelize = sequelize;
 
 db.country = require('./country')(sequelize, Sequelize);
 db.province = require('./province')(sequelize, Sequelize);
+db.jobForm = require('./jobForm')(sequelize, Sequelize);
+db.jobFormFile = require('./jobFormFile')(sequelize, Sequelize);
 
 module.exports = db;
